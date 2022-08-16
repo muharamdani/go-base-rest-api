@@ -1,4 +1,4 @@
-module github.com/muharamdani/gin-user-services
+module github.com/muharamdani/go-base-rest-api
 
 go 1.18
 

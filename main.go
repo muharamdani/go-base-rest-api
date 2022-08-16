@@ -1,10 +1,11 @@
 package main
 
 import (
+	"github.com/muharamdani/go-base-rest-api/config"
+	"github.com/muharamdani/go-base-rest-api/core/db"
+	"github.com/muharamdani/go-base-rest-api/routers"
+
 	"github.com/gin-gonic/gin"
-	"github.com/muharamdani/gin-user-services/config"
-	"github.com/muharamdani/gin-user-services/core/db"
-	"github.com/muharamdani/gin-user-services/routers"
 )
 
 func main() {
