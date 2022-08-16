@@ -2,9 +2,10 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/muharamdani/go-base-rest-api/routers/user"
 )
 
 func Main(router *gin.Engine) {
 	// Call needed router here
-	User(router)
+	user.Router(router)
 }

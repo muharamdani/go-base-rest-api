@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/muharamdani/go-base-rest-api/config"
+	"github.com/muharamdani/go-base-rest-api/core/db"
 	"github.com/muharamdani/go-base-rest-api/routers"
-	"github.com/muharamdani/go-base-rest-api/utils"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,9 +11,9 @@ import (
 func main() {
 	// Initialize the database connection
 	// and call env variable
-	config.Connect()
-	mode := utils.Env("SET_MODE")
-	port := utils.Env("PORT")
+	db.Connect()
+	mode := config.Env("SET_MODE")
+	port := config.Env("PORT")
 	port = ":" + port
 
 	// Set mode to debug|test|release based on the value of the environment variable

@@ -3,7 +3,7 @@ package services
 import (
 	"strconv"
 
-	"github.com/muharamdani/go-base-rest-api/config"
+	conn "github.com/muharamdani/go-base-rest-api/core/db"
 	"github.com/muharamdani/go-base-rest-api/core/models"
 
 	"github.com/gin-gonic/gin"
@@ -18,6 +18,6 @@ func GetUser(c *gin.Context) (interface{}, error) {
 	if err != nil {
 		return nil, err
 	}
-	config.DB.Limit(perPageInt).Find(&users)
+	conn.DB.Limit(perPageInt).Find(&users)
 	return users, nil
 }

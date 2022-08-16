@@ -1,10 +1,10 @@
-package config
+package db
 
 import (
 	"fmt"
 	"log"
 
-	"github.com/muharamdani/go-base-rest-api/utils"
+	"github.com/muharamdani/go-base-rest-api/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 )
@@ -13,11 +13,11 @@ var DB *gorm.DB
 
 // Connect creates a connection to postgresql database and
 func Connect() {
-	user := utils.Env("DB_USER")
-	password := utils.Env("DB_PASS")
-	host := utils.Env("DB_HOST")
-	port := utils.Env("DB_PORT")
-	database := utils.Env("DB_NAME")
+	user := config.Env("DB_USER")
+	password := config.Env("DB_PASS")
+	host := config.Env("DB_HOST")
+	port := config.Env("DB_PORT")
+	database := config.Env("DB_NAME")
 
 	// postgres://user:password@host:port/database
 	dsn := fmt.Sprintf("postgres://%s:%s@%s:%s/%s",
