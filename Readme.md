@@ -2,6 +2,7 @@
 - copy .env.example to .env
 - copy .air.toml.example to .air.toml.example
 - make sure all the configuration is correct
+- run go install github.com/cosmtrek/air@latest
 - run go mod tidy
 
 ### Local Development
