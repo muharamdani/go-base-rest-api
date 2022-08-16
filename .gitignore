@@ -4,3 +4,4 @@ main.exe
 .idea
 tmp
 go.sum
+.air.toml
