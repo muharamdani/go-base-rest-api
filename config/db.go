@@ -2,7 +2,6 @@ package config
 
 import (
 	"fmt"
-	"github.com/muharamdani/gin-user-services/models"
 	"github.com/muharamdani/gin-user-services/utils"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
@@ -34,7 +33,6 @@ func Connect() {
 		panic(err)
 	}
 	log.Println("Database connected")
-	db.AutoMigrate(&models.Users{})
 
 	DB = db
 }
