@@ -3,3 +3,4 @@ main.exe
 .env
 .idea
 tmp
+go.sum
