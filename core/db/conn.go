@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"github.com/muharamdani/gin-user-services/config"
+	"github.com/muharamdani/go-base-rest-api/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
 	"log"
