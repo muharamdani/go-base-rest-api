@@ -4,6 +4,8 @@ import (
 	"regexp"
 )
 
+// https://www.postgresql.org/docs/9.4/errcodes-appendix.html
+
 func IsViolatingUniqueConstraintError(err error) bool {
 	unique := regexp.MustCompile(`\(SQLSTATE 23505\)$`)
 	return unique.MatchString(err.Error())
