@@ -3,16 +3,16 @@ package main
 import (
 	"github.com/gin-gonic/gin"
 	"github.com/muharamdani/gin-user-services/config"
+	"github.com/muharamdani/gin-user-services/core/db"
 	"github.com/muharamdani/gin-user-services/routers"
-	"github.com/muharamdani/gin-user-services/utils"
 )
 
 func main() {
 	// Initialize the database connection
 	// and call env variable
-	config.Connect()
-	mode := utils.Env("SET_MODE")
-	port := utils.Env("PORT")
+	db.Connect()
+	mode := config.Env("SET_MODE")
+	port := config.Env("PORT")
 	port = ":" + port
 
 	// Set mode to debug|test|release based on the value of the environment variable
