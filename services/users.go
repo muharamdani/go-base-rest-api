@@ -1,10 +1,12 @@
 package services
 
 import (
-	"github.com/gin-gonic/gin"
-	"github.com/muharamdani/gin-user-services/config"
-	"github.com/muharamdani/gin-user-services/core/models"
 	"strconv"
+
+	"github.com/muharamdani/go-base-rest-api/config"
+	"github.com/muharamdani/go-base-rest-api/core/models"
+
+	"github.com/gin-gonic/gin"
 )
 
 func GetUser(c *gin.Context) (interface{}, error) {
@@ -14,7 +16,6 @@ func GetUser(c *gin.Context) (interface{}, error) {
 	// convert perPage to int
 	perPageInt, err := strconv.Atoi(perPageStr)
 	if err != nil {
-		panic(err)
 		return nil, err
 	}
 	config.DB.Limit(perPageInt).Find(&users)

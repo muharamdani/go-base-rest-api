@@ -2,10 +2,11 @@ package config
 
 import (
 	"fmt"
-	"github.com/muharamdani/gin-user-services/utils"
+	"log"
+
+	"github.com/muharamdani/go-base-rest-api/utils"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
-	"log"
 )
 
 var DB *gorm.DB

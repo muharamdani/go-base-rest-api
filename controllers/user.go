@@ -2,8 +2,8 @@ package controllers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/muharamdani/gin-user-services/services"
-	"github.com/muharamdani/gin-user-services/utils"
+	"github.com/muharamdani/go-base-rest-api/services"
+	"github.com/muharamdani/go-base-rest-api/utils"
 )
 
 func GetUser(c *gin.Context) {
