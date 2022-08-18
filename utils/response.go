@@ -1,8 +1,12 @@
 package utils
 
 import (
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/muharamdani/go-base-rest-api/utils/errors"
+
+	"github.com/gin-gonic/gin"
+	"gorm.io/gorm"
 )
 
 type Response struct {
@@ -18,6 +22,20 @@ func ResponseOK(c *gin.Context, msg string, data interface{}) {
 		Data:    data,
 	}
 	c.JSON(http.StatusOK, result)
+}
+
+func ResponseDatabaseError(c *gin.Context, msg string, err error) {
+	switch true {
+		case err == gorm.ErrRecordNotFound:
+			ResponseNotFound(c, msg)
+			return
+		case errors.IsViolatingUniqueConstraintError(err):
+			ResponseBadRequest(c, msg, err)
+			return
+		default:
+			ResponseInternalServerError(c, msg)
+			return
+	}
 }
 
 func ResponseInternalServerError(c *gin.Context, msg string) {
@@ -54,6 +72,15 @@ func ResponseForbidden(c *gin.Context, msg string) {
 		Data:    nil,
 	}
 	c.JSON(http.StatusForbidden, result)
+}
+
+func ResponseNotFound(c *gin.Context, msg string) {
+	result := Response{
+		Status:  false,
+		Message: msg,
+		Data:    nil,
+	}
+	c.JSON(http.StatusNotFound, result)
 }
 
 func ResponseUnprocessableEntity(c *gin.Context, msg string, err error) {

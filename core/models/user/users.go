@@ -1,4 +1,4 @@
-package models
+package user
 
 // Users model Example
 type Users struct {
@@ -9,4 +9,8 @@ type Users struct {
 	PhoneNumber string `json:"phone_number" binding:"required" gorm:"string;not null"`
 	Email       string `json:"email" binding:"required" gorm:"string;not null"`
 	Address     string `json:"address" binding:"required" gorm:"text; not null"`
+}
+
+type GetUserPayload struct {
+	Limit int
 }
