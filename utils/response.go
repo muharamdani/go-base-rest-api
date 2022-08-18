@@ -11,7 +11,7 @@ import (
 
 type Response struct {
 	Status  bool        `json:"status"`
-	Message string      `json:"msg"`
+	Message string      `json:"message"`
 	Data    interface{} `json:"data"`
 }
 
@@ -24,16 +24,16 @@ func ResponseOK(c *gin.Context, msg string, data interface{}) {
 	c.JSON(http.StatusOK, result)
 }
 
-func ResponseDatabaseError(c *gin.Context, msg string, err error) {
+func ResponseDatabaseError(c *gin.Context, err error) {
 	switch true {
 		case err == gorm.ErrRecordNotFound:
-			ResponseNotFound(c, msg)
+			ResponseNotFound(c, "Record not found")
 			return
 		case errors.IsViolatingUniqueConstraintError(err):
-			ResponseBadRequest(c, msg, err)
+			ResponseBadRequest(c, "Unique constraint violated", err)
 			return
 		default:
-			ResponseInternalServerError(c, msg)
+			ResponseInternalServerError(c, err.Error())
 			return
 	}
 }
@@ -51,7 +51,7 @@ func ResponseBadRequest(c *gin.Context, msg string, err error) {
 	result := Response{
 		Status:  false,
 		Message: msg,
-		Data:    err,
+		Data:    err.Error(),
 	}
 	c.JSON(http.StatusBadRequest, result)
 }
