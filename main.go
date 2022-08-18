@@ -2,8 +2,8 @@ package main
 
 import (
 	"github.com/muharamdani/go-base-rest-api/config"
-	routers "github.com/muharamdani/go-base-rest-api/core"
-	"github.com/muharamdani/go-base-rest-api/core/db"
+	"github.com/muharamdani/go-base-rest-api/db"
+	routers "github.com/muharamdani/go-base-rest-api/pkg"
 
 	"github.com/gin-gonic/gin"
 )
