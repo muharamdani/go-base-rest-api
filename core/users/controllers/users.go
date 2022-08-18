@@ -1,16 +1,15 @@
-package user
+package controllers
 
 import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
 	conn "github.com/muharamdani/go-base-rest-api/core/db"
-	model "github.com/muharamdani/go-base-rest-api/core/models/user"
-	repo "github.com/muharamdani/go-base-rest-api/core/repositories/user"
-	request "github.com/muharamdani/go-base-rest-api/core/requests/user"
+	model "github.com/muharamdani/go-base-rest-api/core/users/models"
+	repo "github.com/muharamdani/go-base-rest-api/core/users/repositories"
+	request "github.com/muharamdani/go-base-rest-api/core/users/requests"
 	"github.com/muharamdani/go-base-rest-api/utils"
 )
-
 
 func GetUser(c *gin.Context) {
 	var result []model.Users

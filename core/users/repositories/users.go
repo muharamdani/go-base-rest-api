@@ -1,8 +1,8 @@
-package user
+package repositories
 
 import (
-	model "github.com/muharamdani/go-base-rest-api/core/models/user"
-	request "github.com/muharamdani/go-base-rest-api/core/requests/user"
+	model "github.com/muharamdani/go-base-rest-api/core/users/models"
+	request "github.com/muharamdani/go-base-rest-api/core/users/requests"
 	"gorm.io/gorm"
 )
 
