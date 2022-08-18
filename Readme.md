@@ -4,12 +4,17 @@
 - make sure all the configuration is correct
 - run go install github.com/cosmtrek/air@latest
 - run go mod tidy
+- run go install
 
 ### Local Development
 We use [air](https://github.com/cosmtrek/air) to enable hot reload on development
 ```
 air init
 air
+```
+How to migrate
+```
+your_app_name migrate
 ```
 
 ## Need to develop more
