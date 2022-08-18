@@ -4,3 +4,6 @@ main
 main.exe
 .env
 .idea
+tmp
+go.sum
+.air.toml
