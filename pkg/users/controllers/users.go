@@ -1,13 +1,13 @@
 package controllers
 
 import (
+	conn "github.com/muharamdani/go-base-rest-api/db"
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	conn "github.com/muharamdani/go-base-rest-api/core/db"
-	model "github.com/muharamdani/go-base-rest-api/core/users/models"
-	repo "github.com/muharamdani/go-base-rest-api/core/users/repositories"
-	request "github.com/muharamdani/go-base-rest-api/core/users/requests"
+	model "github.com/muharamdani/go-base-rest-api/pkg/users/models"
+	repo "github.com/muharamdani/go-base-rest-api/pkg/users/repositories"
+	request "github.com/muharamdani/go-base-rest-api/pkg/users/requests"
 	"github.com/muharamdani/go-base-rest-api/utils"
 )
 

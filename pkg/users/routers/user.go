@@ -2,7 +2,7 @@ package routers
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/muharamdani/go-base-rest-api/core/users/controllers"
+	"github.com/muharamdani/go-base-rest-api/pkg/users/controllers"
 )
 
 func Router(router *gin.Engine) {

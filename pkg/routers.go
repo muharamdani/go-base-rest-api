@@ -1,8 +1,8 @@
-package routers
+package users
 
 import (
 	"github.com/gin-gonic/gin"
-	users "github.com/muharamdani/go-base-rest-api/core/users/routers"
+	users "github.com/muharamdani/go-base-rest-api/pkg/users/routers"
 )
 
 func Main(router *gin.Engine) {
