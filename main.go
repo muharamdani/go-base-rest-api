@@ -1,14 +1,20 @@
+/*
+Copyright © 2022 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
 import (
+	"github.com/gin-gonic/gin"
+	"github.com/muharamdani/go-base-rest-api/cmd"
 	"github.com/muharamdani/go-base-rest-api/config"
 	"github.com/muharamdani/go-base-rest-api/db"
 	routers "github.com/muharamdani/go-base-rest-api/pkg"
-
-	"github.com/gin-gonic/gin"
 )
 
 func main() {
+	cmd.Execute()
+
 	// Initialize the database connection
 	// and call env variable
 	db.Connect()
@@ -23,7 +29,7 @@ func main() {
 	app := gin.Default()
 	app.SetTrustedProxies([]string{"127.0.0.1"})
 	// Call for all router here
-	routers.Main(app)
+	routers.Router(app)
 
 	// Listen and Server in 0.0.0.0:8080
 	err := app.Run(port)
