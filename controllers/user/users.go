@@ -5,17 +5,15 @@ import (
 
 	"github.com/gin-gonic/gin"
 	conn "github.com/muharamdani/go-base-rest-api/core/db"
-	"github.com/muharamdani/go-base-rest-api/core/models"
-	"github.com/muharamdani/go-base-rest-api/core/repositories/user"
+	model "github.com/muharamdani/go-base-rest-api/core/models/user"
+	repo "github.com/muharamdani/go-base-rest-api/core/repositories/user"
+	request "github.com/muharamdani/go-base-rest-api/core/requests/user"
 	"github.com/muharamdani/go-base-rest-api/utils"
 )
 
-type getUserPayload struct {
-	Limit int
-}
 
 func GetUser(c *gin.Context) {
-	var result []models.Users
+	var result []model.Users
 
 	limit, err := strconv.Atoi(c.DefaultQuery("limit", "10"))
 	if err != nil {
@@ -23,11 +21,11 @@ func GetUser(c *gin.Context) {
 		return
 	}
 
-	payload := getUserPayload{
+	payload := request.FetchAllUser{
 		Limit: limit,
 	}
 
-	if err := user.FetchAll(conn.DB, &result, payload); err != nil {
+	if err := repo.FetchAll(conn.DB, &result, &payload); err != nil {
 		utils.ResponseInternalServerError(c, err.Error())
 		return
 	}

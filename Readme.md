@@ -8,6 +8,7 @@
 ### Local Development
 We use [air](https://github.com/cosmtrek/air) to enable hot reload on development
 ```
+air init
 air
 ```
 
