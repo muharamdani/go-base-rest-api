@@ -1,4 +1,4 @@
-package user
+package models
 
 // Users model Example
 type Users struct {

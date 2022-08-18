@@ -1,9 +1,6 @@
 tmp/
-go.sum
 main
 main.exe
 .env
-.idea
-tmp
-go.sum
+.idea/
 .air.toml
