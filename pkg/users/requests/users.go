@@ -1,6 +1,6 @@
 package requests
 
-// List all valid and available query param
-type FetchAllUser struct {
-	Limit int
+type GetUser struct {
+	Limit int `form:"limit,default=10"`
+	Page  int `form:"page,default=1"`
 }
