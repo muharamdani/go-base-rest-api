@@ -1,3 +1,5 @@
+tmp/
+go.sum
 main
 main.exe
 .env
