@@ -13,11 +13,16 @@ air init
 air
 ```
 How to migrate
+- using go run (preferred method for local development)
 ```
-your_app_name migrate
+go run main.go migrate
+[this method doesn't need to run 'go install' every modification in file/migration]
+```
+- using app_name (preferred method for server who need to run CI/CD everytime)
+```
+go-base-rest-api migrate
+[this method need to run 'go install' every modification in migration]
 ```
 
 ## Need to develop more
-- Separate cmd, like migrate and seed
-- Repository management
-- Validation management
+- Seeder
