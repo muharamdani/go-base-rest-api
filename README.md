@@ -65,7 +65,7 @@ package tests
 ```
 - Integration testing
 ```
- go test ./.../tests -tags=integraion -v 
+ go test ./.../tests -tags=integration -v 
 ```
 - Specific pkg test, example users pkg
 ```

@@ -1,16 +1,15 @@
 package migrations
 
 import (
-	"fmt"
+	"log"
 
-	conn "github.com/muharamdani/go-base-rest-api/db"
 	"github.com/muharamdani/go-base-rest-api/pkg/users/models"
+	"gorm.io/gorm"
 )
 
-func Migrate() {
-	conn.Connect("testing")
-	conn.DB.AutoMigrate(&models.Users{})
+func Migrate(conn *gorm.DB) {
+	conn.AutoMigrate(&models.Users{})
 	// Example another migrator command place below
-	//conn.DB.Migrator().DropColumn(&models.Users{}, "address")
-	fmt.Println("Migrate success")
+	// conn.DB.Migrator().DropColumn(&models.Users{}, "address")
+	log.Println("Migrate success")
 }
