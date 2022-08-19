@@ -2,5 +2,6 @@ tmp/
 main
 main.exe
 .env
+.env.test
 .idea/
 .air.toml

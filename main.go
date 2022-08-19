@@ -17,7 +17,7 @@ func main() {
 
 	// Initialize the database connection
 	// and call env variable
-	db.Connect()
+	db.Connect("default")
 	mode := config.Env("SET_MODE")
 	port := config.Env("PORT")
 	port = ":" + port

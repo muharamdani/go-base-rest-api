@@ -7,8 +7,8 @@ import (
 )
 
 func Migrate() {
-	conn.Connect()
-	conn.DB.Migrator().DropTable(&models.Users{})
+	conn.Connect("testing")
+	conn.DB.AutoMigrate(&models.Users{})
 	// Example another migrator command place below
 	//conn.DB.Migrator().DropColumn(&models.Users{}, "address")
 	fmt.Println("Migrate success")
