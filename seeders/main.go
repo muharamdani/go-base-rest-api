@@ -8,7 +8,7 @@ import (
 )
 
 func Seed() {
-	db.Connect()
+	db.Connect("default")
 	db.DB.Session(&gorm.Session{CreateBatchSize: 100, AllowGlobalUpdate: true})
 
 	if err := userSeeders(db.DB); err != nil {
