@@ -2,17 +2,23 @@ package db
 
 import (
 	"fmt"
-	"log"
-
 	"github.com/muharamdani/go-base-rest-api/config"
 	"gorm.io/driver/postgres"
 	"gorm.io/gorm"
+	"log"
 )
 
 var DB *gorm.DB
 
 // Connect creates a connection to postgresql database and
-func Connect() {
+func Connect(env string) {
+	if env == "" || env == "default" {
+		env = ".env"
+	} else {
+		env = ".env.test"
+	}
+
+	config.ENV = &env
 	user := config.Env("DB_USER")
 	password := config.Env("DB_PASS")
 	host := config.Env("DB_HOST")

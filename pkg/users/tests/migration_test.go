@@ -1,4 +1,4 @@
-//go:build integration || users || pkg || all
+//go:build integration || users || pkg || all || migrate
 
 package tests
 
@@ -9,12 +9,13 @@ import (
 
 // TestMigrate migrate users table, example only not real test case, need to change using testify later
 func TestMigrate(t *testing.T) {
-	var tests []struct {
-		name string
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			migrations.Migrate()
-		})
-	}
+	//var tests []struct {
+	//	name string
+	//}
+	migrations.Migrate()
+	//for _, tt := range tests {
+	//	t.Run(tt.name, func(t *testing.T) {
+	//		migrations.Migrate()
+	//	})
+	//}
 }
