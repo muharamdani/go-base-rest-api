@@ -24,6 +24,19 @@ go-base-rest-api migrate
 [this method need to run 'go install' every modification in migration]
 ```
 
+Seeding
+Keep in mind that seeding will delete all affected table data before inserting the seed
+- using go run (preferred method for local development)
+```
+go run main.go seed
+[this method doesn't need to run 'go install' every modification in file/migration]
+```
+- using app_name (preferred method for server who need to run CI/CD everytime)
+```
+go-base-rest-api seed
+[this method need to run 'go install' every modification in migration]
+```
+
 ## Testing
 ### Create test cases
 All test case placed in tests folder, example in pkg/users/tests, pkg/auth/tests, etc
