@@ -22,7 +22,7 @@ func Get(c *gin.Context) {
 	}
 
 	if err := repo.FetchAll(conn.DB, &user, &payload); err != nil {
-		utils.ResponseInternalServerError(c, err.Error())
+		utils.ResponseDatabaseError(c, err)
 		return
 	}
 

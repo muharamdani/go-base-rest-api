@@ -2,6 +2,7 @@ package migrations
 
 import (
 	"fmt"
+
 	conn "github.com/muharamdani/go-base-rest-api/db"
 	"github.com/muharamdani/go-base-rest-api/pkg/users/models"
 )

@@ -1,17 +1,18 @@
 /*
 Copyright © 2022 NAME HERE <EMAIL ADDRESS>
-
 */
 package cmd
 
 import (
-	"github.com/muharamdani/go-base-rest-api/migrations"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/muharamdani/go-base-rest-api/migrations"
+	"github.com/muharamdani/go-base-rest-api/seeders"
+	"github.com/spf13/cobra"
 )
 
-// serveCmd represents the serve command
-var serveCmd = &cobra.Command{
+// migrateCmd represents the migrating schema
+var migrateCmd = &cobra.Command{
 	Use:   "migrate",
 	Short: "This command will migrate all migrations func inside the migrations folder.",
 	Run: func(cmd *cobra.Command, args []string) {
@@ -20,6 +21,16 @@ var serveCmd = &cobra.Command{
 	},
 }
 
+var seedCmd = &cobra.Command{
+	Use:   "seed",
+	Short: "This command will insert all seed data into the database. WARNING: Database data is deleted before seeding.",
+	Run: func(cmd *cobra.Command, args []string) {
+		seeders.Seed()
+		os.Exit(0)
+	},
+}
+
 func init() {
-	rootCmd.AddCommand(serveCmd)
+	rootCmd.AddCommand(migrateCmd)
+	rootCmd.AddCommand(seedCmd)
 }
