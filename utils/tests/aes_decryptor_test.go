@@ -2,12 +2,16 @@
 
 package tests
 
-import "testing"
+import (
+	"github.com/go-playground/assert/v2"
+	"testing"
+)
 import "github.com/muharamdani/go-base-rest-api/utils"
 
-
 func TestAESDecrypt(t *testing.T) {
-	key := []byte("1234567890123456")
-	ct := "ciphertext"
-	utils.AESDecrypt(key, ct)
+	key := "12345678901234567890123456789012"
+	iv := "1234567890123456"
+	ct := "aKTs8BBg4ZL2oiM2Hy/oPg=="
+	res := utils.AESDecrypt(key, iv, ct)
+	assert.Equal(t, "Test", res)
 }
