@@ -4,7 +4,7 @@ import (
 	"crypto/aes"
 	"crypto/cipher"
 	"encoding/base64"
-	"fmt"
+	"strings"
 )
 
 func AESDecrypt(key, iv, ct string) string {
@@ -22,6 +22,5 @@ func AESDecrypt(key, iv, ct string) string {
 	}
 	mode := cipher.NewCBCDecrypter(block, []byte(iv))
 	mode.CryptBlocks(ciphertext, ciphertext)
-	fmt.Println(string(ciphertext))
-	return string(ciphertext)
+	return strings.TrimSpace(string(ciphertext))
 }
