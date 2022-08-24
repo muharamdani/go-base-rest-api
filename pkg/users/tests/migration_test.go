@@ -1,25 +1,19 @@
-//go:build integration || users || pkg || all || migrate
+//go:build integration || users || pkg || migrate || all
 
 package tests
 
 import (
+	"github.com/muharamdani/go-base-rest-api/pkg/users/migrations"
+	"os"
 	"testing"
 
-	"github.com/muharamdani/go-base-rest-api/pkg/users/migrations"
 	conn "github.com/muharamdani/go-base-rest-api/db"
 )
 
 // TestMigrate migrate users table, example only not real test case, need to change using testify later
 func TestMigrate(t *testing.T) {
-	//var tests []struct {
-	//	name string
-	//}
+	os.Setenv("APP_DIR", "go-base-rest-api")
 	conn.Connect("testing")
 
 	migrations.Migrate(conn.DB)
-	//for _, tt := range tests {
-	//	t.Run(tt.name, func(t *testing.T) {
-	//		migrations.Migrate()
-	//	})
-	//}
 }

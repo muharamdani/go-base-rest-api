@@ -3,13 +3,14 @@
 package tests
 
 import (
+	"log"
 	"net/http"
+	"os"
 	"testing"
 
-	"github.com/muharamdani/go-base-rest-api/pkg/users/routers"
-	"github.com/muharamdani/go-base-rest-api/pkg/users/models"
-	"github.com/muharamdani/go-base-rest-api/utils"
 	"github.com/muharamdani/go-base-rest-api/db"
+	"github.com/muharamdani/go-base-rest-api/pkg/users/models"
+	"github.com/muharamdani/go-base-rest-api/pkg/users/routers"
 
 	"github.com/gavv/httpexpect/v2"
 	"github.com/gin-gonic/gin"
@@ -19,16 +20,16 @@ import (
 
 type UserTestSuite struct {
 	suite.Suite
-	DB *gorm.DB
+	DB     *gorm.DB
 	Server *gin.Engine
 	Client *httpexpect.Expect
 }
 
 // Setup for the entire suite, for specific test setup use SetupTest() below
 func (suite *UserTestSuite) SetupSuite() {
-    db.ConnectSqlite("../../../test.sqlite3")
+	db.ConnectSqlite("../../../test.sqlite3")
 	suite.DB = db.DB
-	
+
 	suite.Server = gin.Default()
 	routers.Router(suite.Server)
 
@@ -59,7 +60,7 @@ func (suite *UserTestSuite) TearDownSuite() {
 
 // Executed before each test
 func (suite *UserTestSuite) SetupTest() {
-	
+
 }
 
 // Executed after each test
@@ -88,5 +89,5 @@ func (suite *UserTestSuite) TestInsertUser() {
 }
 
 func TestUserTestSuite(t *testing.T) {
-    suite.Run(t, new(UserTestSuite))
+	suite.Run(t, new(UserTestSuite))
 }
