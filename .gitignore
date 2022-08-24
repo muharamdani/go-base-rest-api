@@ -5,3 +5,4 @@ main.exe
 .env.test
 .idea/
 .air.toml
+private.pem

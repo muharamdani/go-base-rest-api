@@ -4,9 +4,9 @@ package tests
 
 import (
 	"github.com/go-playground/assert/v2"
+	"github.com/muharamdani/go-base-rest-api/utils"
 	"testing"
 )
-import "github.com/muharamdani/go-base-rest-api/utils"
 
 func TestEqualAESDecrypt(t *testing.T) {
 	key := "12345678901234567890123456789012"

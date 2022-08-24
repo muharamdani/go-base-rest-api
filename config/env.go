@@ -9,12 +9,9 @@ import (
 
 var ENV *string
 
-var (
-	projectDirName = "go-base-rest-api"
-)
-
 // Env Load environment variable from .env file
 func Env(key string) string {
+	projectDirName := os.Getenv("APP_DIR")
 	re := regexp.MustCompile(`^(.*` + projectDirName + `)`)
 	cwd, _ := os.Getwd()
 	rootPath := re.Find([]byte(cwd))
