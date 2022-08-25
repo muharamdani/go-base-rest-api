@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/gavv/httpexpect/v2 v2.3.1
 	github.com/gin-gonic/gin v1.8.1
+	github.com/go-gormigrate/gormigrate/v2 v2.0.2
 	github.com/go-playground/assert/v2 v2.0.1
 	github.com/go-playground/validator/v10 v10.11.0
 	github.com/joho/godotenv v1.4.0

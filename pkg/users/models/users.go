@@ -1,5 +1,7 @@
 package models
 
+import "gorm.io/gorm"
+
 // Users model Example
 type Users struct {
 	Id          int    `json:"id" gorm:"primary_key;autoIncrement"`
@@ -9,4 +11,5 @@ type Users struct {
 	PhoneNumber string `json:"phone_number" binding:"required" gorm:"string;not null"`
 	Email       string `json:"email" binding:"required" gorm:"string;not null;unique"`
 	Address     string `json:"address" binding:"required" gorm:"text; not null"`
+	gorm.Model
 }
