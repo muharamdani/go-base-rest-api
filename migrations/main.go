@@ -5,8 +5,16 @@ import (
 	users "github.com/muharamdani/go-base-rest-api/pkg/users/migrations"
 )
 
+func init() {
+	conn.Connect("default")
+}
+
 func ExecuteMigrations() {
 	// Call another migration here
-	conn.Connect("default")
 	users.Migrate(conn.DB)
+}
+
+func RollbackMigrations() {
+	// Call another rollback migration here
+	users.RollbackMigration(conn.DB)
 }

@@ -12,15 +12,23 @@ We use [air](https://github.com/cosmtrek/air) to enable hot reload on developmen
 air init
 air
 ```
-How to migrate
+How to migrate and rollback
 - using go run (preferred method for local development)
 ```
+# Migrate
 go run main.go migrate
+
+# Rollback
+go run main.go migrate rollback
 [this method doesn't need to run 'go install' every modification in file/migration]
 ```
 - using app_name (preferred method for server who need to run CI/CD everytime)
 ```
-go-base-rest-api migrate
+# Migrate
+user-service migrate
+
+# Rollback
+user-service migrate rollback
 [this method need to run 'go install' every modification in migration]
 ```
 
@@ -55,29 +63,29 @@ All test case placed in tests folder, example in pkg/users/tests, pkg/auth/tests
 // Feel free to use any tags you want, e.g. utils, main, migration, etc.
 
 package tests
-// code for test case below 
+// code for test case below
 ```
 
 ### Run test cases
 - Unit testing
 ```
- go test ./.../tests -tags=unit -v 
+ go test ./.../tests -tags=unit -v
 ```
 - Integration testing
 ```
- go test ./.../tests -tags=integration -v 
+ go test ./.../tests -tags=integration -v
 ```
 - Specific pkg test, example users pkg
 ```
- go test ./.../tests -tags=users -v 
+ go test ./.../tests -tags=users -v
 ```
 - All test case under pkg directory
 ```
- go test ./.../tests -tags=pkg -v 
+ go test ./.../tests -tags=pkg -v
 ```
 - All test case
 ```
- go test ./.../tests -tags=all -v 
+ go test ./.../tests -tags=all -v
 ```
 
 ## Need to develop more
