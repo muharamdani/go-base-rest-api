@@ -25,10 +25,10 @@ go run main.go migrate rollback
 - using app_name (preferred method for server who need to run CI/CD everytime)
 ```
 # Migrate
-user-service migrate
+go-base-rest-api migrate
 
 # Rollback
-user-service migrate rollback
+go-base-rest-api migrate rollback
 [this method need to run 'go install' every modification in migration]
 ```
 
