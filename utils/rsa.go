@@ -11,7 +11,6 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
-	"regexp"
 )
 
 // GenerateKeyPairs generate public and private key
@@ -88,11 +87,8 @@ func RSADecrypt(cipherText string, privKey rsa.PrivateKey) string {
 func BytesToPrivateKey(keyLocation string) rsa.PrivateKey {
 	// Default placement private.pem is in root directory
 	if keyLocation == "" {
-		projectDirName := os.Getenv("APP_DIR")
-		re := regexp.MustCompile(`^(.*` + projectDirName + `)`)
-		cwd, _ := os.Getwd()
-		rootPath := re.Find([]byte(cwd))
-		keyLocation = string(rootPath) + "/" + "private.pem"
+		rootPath := GetRootPath()
+		keyLocation = rootPath + "private.pem"
 	}
 
 	priKey, err := ioutil.ReadFile(keyLocation)
@@ -111,11 +107,8 @@ func BytesToPrivateKey(keyLocation string) rsa.PrivateKey {
 func ByteToPublicKey(keyLocation string) rsa.PublicKey {
 	// Default placement public.pem is in root directory
 	if keyLocation == "" {
-		projectDirName := os.Getenv("APP_DIR")
-		re := regexp.MustCompile(`^(.*` + projectDirName + `)`)
-		cwd, _ := os.Getwd()
-		rootPath := re.Find([]byte(cwd))
-		keyLocation = string(rootPath) + "/" + "public.pem"
+		rootPath := GetRootPath()
+		keyLocation = rootPath + "public.pem"
 	}
 
 	pubKey, err := ioutil.ReadFile(keyLocation)

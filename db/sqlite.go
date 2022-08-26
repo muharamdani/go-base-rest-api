@@ -1,18 +1,19 @@
 package db
 
 import (
+	"github.com/muharamdani/go-base-rest-api/utils"
 	"log"
 
 	"gorm.io/driver/sqlite"
 	"gorm.io/gorm"
 )
 
-var Sqlite *gorm.DB
-
 func ConnectSqlite(dbName string) {
-	db, err := gorm.Open(sqlite.Open(dbName), &gorm.Config{
+	rootPath := utils.GetRootPath()
+	dbLocation := rootPath + dbName
+	db, err := gorm.Open(sqlite.Open(dbLocation), &gorm.Config{
 		DisableForeignKeyConstraintWhenMigrating: true,
-		AllowGlobalUpdate: true,
+		AllowGlobalUpdate:                        true,
 	})
 	if err != nil {
 		log.Println("Failed to connect to database")

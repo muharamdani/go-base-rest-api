@@ -6,3 +6,4 @@ main.exe
 .idea/
 .air.toml
 private.pem
+test.sqlite3
