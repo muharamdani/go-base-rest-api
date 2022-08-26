@@ -26,15 +26,15 @@ func ResponseOK(c *gin.Context, msg string, data interface{}) {
 
 func ResponseDatabaseError(c *gin.Context, err error) {
 	switch true {
-		case err == gorm.ErrRecordNotFound:
-			ResponseNotFound(c, "Record not found")
-			return
-		case errors.IsViolatingUniqueConstraintError(err):
-			ResponseBadRequest(c, "Unique constraint violated", err)
-			return
-		default:
-			ResponseInternalServerError(c, err.Error())
-			return
+	case err == gorm.ErrRecordNotFound:
+		ResponseNotFound(c, "Record not found")
+		return
+	case errors.IsViolatingUniqueConstraintError(err):
+		ResponseBadRequest(c, "Unique constraint violated", err)
+		return
+	default:
+		ResponseInternalServerError(c, err.Error())
+		return
 	}
 }
 

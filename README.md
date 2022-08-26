@@ -15,6 +15,9 @@ air
 How to migrate and rollback
 - using go run (preferred method for local development)
 ```
+# Create Migration
+go run main.go migrate --create=migration_name
+
 # Migrate
 go run main.go migrate
 
@@ -24,6 +27,9 @@ go run main.go migrate rollback
 ```
 - using app_name (preferred method for server who need to run CI/CD everytime)
 ```
+# Create Migration
+go-base-rest-api migrate --create=migration_name
+
 # Migrate
 go-base-rest-api migrate
 
@@ -67,6 +73,10 @@ package tests
 ```
 
 ### Run test cases
+- Clean test cache before run test
+```
+go clean --testcache 
+```
 - Unit testing
 ```
  go test ./.../tests -tags=unit -v

@@ -1,11 +1,9 @@
-//go:build integration || pkg || users || all
+//go:build integration || pkg || users || all || e2e
 
 package tests
 
 import (
-	"log"
 	"net/http"
-	"os"
 	"testing"
 
 	"github.com/muharamdani/go-base-rest-api/db"
@@ -27,9 +25,10 @@ type UserTestSuite struct {
 
 // Setup for the entire suite, for specific test setup use SetupTest() below
 func (suite *UserTestSuite) SetupSuite() {
-	db.ConnectSqlite("../../../test.sqlite3")
+	db.ConnectSqlite("test.sqlite3")
 	suite.DB = db.DB
 
+	gin.SetMode("test")
 	suite.Server = gin.Default()
 	routers.Router(suite.Server)
 
@@ -49,13 +48,7 @@ func (suite *UserTestSuite) SetupSuite() {
 
 // Teardown for the entire suite, for specific test teardown use TearDownTest() below
 func (suite *UserTestSuite) TearDownSuite() {
-	db, _ := suite.DB.DB()
-	db.Close()
-
-	err := os.Remove("../../../test.sqlite3")
-	if err != nil {
-		log.Fatal(err)
-	}
+	suite.DB.DB()
 }
 
 // Executed before each test
@@ -77,12 +70,11 @@ func (suite *UserTestSuite) TestGetUsers() {
 func (suite *UserTestSuite) TestInsertUser() {
 	resp := suite.Client.POST("/users").
 		WithJSON(map[string]interface{}{
-			"first_name":   "Muhamad",
-			"last_name":    "Ramdani",
-			"username":     "muharamdani",
-			"phone_number": "812317641",
-			"email":        "muharamdani@gmail.com",
-			"address":      "Rumah no 91",
+			"first_name": "Muhamad",
+			"last_name":  "Ramdani",
+			"username":   "mramdani",
+			"email":      "mramdani@mail.com",
+			"password":   "asdf1234",
 		}).Expect().Status(http.StatusOK).JSON().Object()
 
 	resp.Value("data").Object().ValueEqual("first_name", "Muhamad")

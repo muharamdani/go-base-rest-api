@@ -91,7 +91,7 @@ func Update(c *gin.Context) {
 
 func Delete(c *gin.Context) {
 	var user model.Users
-	
+
 	id, err := strconv.Atoi(c.Param("id"))
 	if err != nil {
 		utils.ResponseInternalServerError(c, err.Error())
